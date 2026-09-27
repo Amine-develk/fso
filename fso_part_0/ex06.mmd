@@ -1,0 +1,13 @@
+sequenceDiagram
+    participant browser
+    participant server
+
+    Note right of browser: user writes a note and clicks save
+    
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+    activate server
+
+    Note left of server: server saves the new note
+    server->>browser: HTTP 201 created
+    Note right of browser: browser executes the callback function that adds the new note
+    Note right of browser: browser renders the page without reloading the page
